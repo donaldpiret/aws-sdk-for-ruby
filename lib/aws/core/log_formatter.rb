@@ -277,7 +277,7 @@ module AWS
         when Array    then summarize_array(value)
         when File     then summarize_file(value.path)
         when Pathname then summarize_file(value)
-        else value.inspect
+        else value.force_encoding("UTF-8").inspect
         end
       end
   
@@ -288,7 +288,7 @@ module AWS
         if str.size > max
           "#<String #{str[0...max].inspect} ... (#{str.size} bytes)>"
         else
-          str.inspect
+          str.force_encoding("UTF-8").inspect
         end
       end
 
